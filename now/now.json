@@ -1,0 +1,7 @@
+{
+	"version": 2,
+	"name": "yuububot-test-now",
+	"builds": [
+		{"src": "*.py", "use": "@now/python" , "config": {"maxLambdaSize": "10mb"}}
+	]
+}

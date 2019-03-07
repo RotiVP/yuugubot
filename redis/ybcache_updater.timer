@@ -1,0 +1,10 @@
+[Unit]
+Description=Update the yuugubot cache daily
+
+[Timer]
+OnCalendar=daily
+RandomizedDelaySec=60
+Persistent=true
+
+[Install]
+WantedBy=timers.target

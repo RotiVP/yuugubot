@@ -1,0 +1,13 @@
+[Unit]
+Description=Update the yuugubot cache daily
+DefaultDependencies=yes
+
+[Service]
+Type=oneshot
+RemainAfterExit=no
+User=vanya
+Group=vanya
+ExecStart=/usr/bin/python3 /home/vanya/code/docker/ybcache.py
+
+[Install]
+WantedBy=multi-user.target
