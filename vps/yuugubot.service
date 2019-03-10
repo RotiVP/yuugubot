@@ -1,0 +1,13 @@
+[Unit]
+Description=Docker container system of yuugubot
+After=docker.service
+Requires=docker.service
+
+[Service]
+#Restart=always
+ExecStartPre=-/usr/local/bin/docker-compose -f {{ basedir }}/_compose/docker-compose.yml down --remove-orphans -v
+ExecStart=/usr/local/bin/docker-compose -f {{ basedir }}/_compose/docker-compose.yml up
+ExecStop=/usr/local/bin/docker-compose -f {{ basedir }}/_compose/docker-compose.yml down --remove-orphans -v
+
+[Install]
+WantedBy=multi-user.target

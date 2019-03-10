@@ -1,7 +1,1 @@
-yuugubot api
-ln ybapi.py now/ybapi.py
-change the api in this directory!
-
 pip в Debian системах 2, для 3 - pip3 из пакета python3-pip
-pip3 install --user redis
-pip3 install --user pytz
