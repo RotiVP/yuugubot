@@ -20,5 +20,4 @@ def index():
 #        return redirect(request.url.replace('http://', 'https://'), code=301)
 
 if __name__ == "__main__":
-#ssl_context='adhoc'
-    app.run(host='0.0.0.0', port='5000')
+    app.run(host='0.0.0.0', ssl_context='adhoc', port='5000')
