@@ -15,15 +15,15 @@ docker create \
 	--network ${SHNAME}net \
 	--ip 172.19.0.2 \
 	-p 443:5000 \
-	--mount type=bind,source=../code,target=/app \
+	--mount type=bind,source="$(pwd)/../code",target=/app \
 	--name ${NAME} \
 	${NAME}:${TAG}
 
 docker create \
 	--network ${SHNAME}net \
 	--ip 172.19.0.3 \
-	--mount type=bind,source=redis/redis.conf,target=/usr/local/etc/redis/redis.conf \
-	--mount type=bind,source=redis/data,target=/data \
+	--mount type=bind,source="$(pwd)/redis/redis.conf",target=/usr/local/etc/redis/redis.conf \
+	--mount type=bind,source="$(pwd)/redis/data",target=/data \
 	--name redis \
 	redis:5.0.3-stretch redis-server /usr/local/etc/redis/redis.conf
 

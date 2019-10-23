@@ -16,8 +16,8 @@ For Ubuntu, log in as root and run:
 # apt-get update && apt-get upgrade -y && apt-get install -y git docker.io python3 python3-pip
 $ git clone https://github.com/vpunch/UgraSage
 $ cd UgraSage/vps
-# ./install.py
-# ./start.py
+# ./install.sh
+# ./start.sh
 ```
 
 ## Updating
