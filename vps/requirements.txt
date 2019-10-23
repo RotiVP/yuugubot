@@ -5,3 +5,4 @@ certbot
 gensim
 scikit-learn
 redis
+gunicorn

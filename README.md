@@ -1,36 +1,29 @@
-# Yuugubot
-Now the bot is adapted only for Yandex Alice
+# UgraSage
 
-## Installation
+Information bot for Yugra State University, which uses Yandex Alice
+
+## Quickstart
+
 Dependencies:
 - systemd
 - git *
 - docker
 - python3
+- pip3
 
-Run these commands:
+For Ubuntu, log in as root and run:
 ```
-$ git clone https://github.com/RotiVP/yuugubot
-$ cd yuugubot/vps
-# install.sh
-```
-
-## Launching
-In yuugubot/vps:
-```
-# start.sh
-```
-
-## Uninstallation
-In yuugubot/vps:
-```
-# uninstall.sh
+# apt-get update && apt-get upgrade -y && apt-get install -y git docker.io python3 python3-pip
+$ git clone https://github.com/vpunch/UgraSage
+$ cd UgraSage/vps
+# ./install.py
+# ./start.py
 ```
 
 ## Updating
-Do the following steps:
-- uninstall the bot
-- install the bot
+
+Run vps/uninstall.sh and then install the bot again
 
 ## Note
+
 The bot listens on 443 port

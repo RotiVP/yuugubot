@@ -6,7 +6,6 @@ import requests
 import json
 import datetime
 import re
-#import sys
 import pytz
 
 rcon = redis.Redis(host='172.19.0.3', port=6379, db=0)

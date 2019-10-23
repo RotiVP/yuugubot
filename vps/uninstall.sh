@@ -1,9 +1,9 @@
-docker stop redis yuugubot
-docker rm redis yuugubot
+docker stop redis ugrasage
+docker rm redis ugrasage
 
-docker rmi redis:5.0.3-stretch yuugubot:latest
+docker rmi redis:5.0.3-stretch ugrasage:latest
 
-docker network rm ybnet
+docker network rm ysnet
 
-systemctl stop ybcache_updater.timer
-rm /etc/systemd/system/ybcache_updater.*
+systemctl stop yscache_update.timer
+rm /etc/systemd/system/yscache_update.*

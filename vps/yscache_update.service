@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily update of UgraSage cache
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/python3 %p/yscache.py
+
+[Install]
+WantedBy=multi-user.target

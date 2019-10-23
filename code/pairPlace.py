@@ -1,6 +1,6 @@
 from datetime import datetime
 
-import ybcache
+import yscache
 import ybclip
 
 
@@ -21,13 +21,13 @@ def pairPlace(user_cache, rawvres, raweres, user_req):
         cdata = user_cache['context_data']['data']
 
     if is_group:
-        timetable = ybcache.get_cache(cdata)
+        timetable = yscache.get_cache(cdata)
         if timetable is None:
             rawvres['response']['text'] = 'Извините, мне не знакома эта группа...'
             rawvres['response']['buttons'] = [ybclip.group_tt_button]
             return True
     else:
-        teacher_cache = ybcache.get_cache(ybcache.short_name(cdata))
+        teacher_cache = yscache.get_cache(yscache.short_name(cdata))
         if teacher_cache is None:
             rawvres['response']['text'] = 'Извините, мне не знакомо это имя...'
             rawvres['response']['buttons'] = [ybclip.teacher_tt_button]

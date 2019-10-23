@@ -2,7 +2,7 @@ import json
 import re
 
 import ybbrain
-import ybcache 
+import yscache 
 from pairPlace import pairPlace
 from pairInfo import pairInfo
 from teacherPlace import teacherPlace
@@ -48,9 +48,14 @@ def handleReqbody(body):
         rawvres['response']['end_session'] = True
         return json.dumps(rawvres, ensure_ascii=False, indent=None)
 
+    if req['request']['original_utterance'] == 'test':
+        rawvres['response']['text'] = 'hello'
+        rawvres['response']['end_session'] = True
+        return json.dumps(rawvres, ensure_ascii=False, indent=None)
+
 
     user_id = req['session']['user_id']
-    user_cache = ybcache.get_cache(user_id)
+    user_cache = yscache.get_cache(user_id)
     # если кэш отчистился, а сессия у пользователя продолжается или пользователь новый
     if user_cache is None:
         user_cache = {
@@ -92,7 +97,7 @@ def handleReqbody(body):
         status = handleRequest(user_cache, req['request'], rawvres, raweres)
 
     #save user cache
-    ybcache.set_cache(user_id, user_cache)
+    yscache.set_cache(user_id, user_cache)
 
     return json.dumps(
             rawvres if status else raweres,
@@ -282,7 +287,7 @@ def handleRequest(user_cache, req, rawvres, raweres):
             group = reres.group('group')
             if not group:
                 return True
-            if ybcache.get_cache(group) is None:
+            if yscache.get_cache(group) is None:
                 rawvres['response']['text'] = 'Извините, я не знаю такую группу...'
                 return True
             user_cache['clarification'] = group
@@ -298,7 +303,7 @@ def handleRequest(user_cache, req, rawvres, raweres):
                         rawvres['response']['text'] = 'Попробуйте снова с полным именем.'
                         return True
 
-                    if ybcache.get_cache(ybcache.short_name(name)) is None:
+                    if yscache.get_cache(yscache.short_name(name)) is None:
                         rawvres['response']['text'] = 'Извините, мне это имя не знакомо...'
                         return True
 
@@ -367,7 +372,7 @@ def yfio2string(fio_dict):
         fio_arr.append(fio_dict['patronymic_name'])
 
     # + привести в порядок регистр
-    return ybcache.fix_name(' '.join(fio_arr))
+    return yscache.fix_name(' '.join(fio_arr))
 
 def fetch_pair_cd(user_cache, reres, entities):
     if reres is not None:

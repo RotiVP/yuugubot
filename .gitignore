@@ -1,1 +1,2 @@
-/dump
+__pycache__
+code/redis/data/*

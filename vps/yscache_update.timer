@@ -1,5 +1,5 @@
 [Unit]
-Description=Update the yuugubot cache daily
+Description=Daily update of UgraSage cache
 
 [Timer]
 OnCalendar=daily

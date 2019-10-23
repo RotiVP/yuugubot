@@ -1,5 +1,5 @@
 import ybclip
-import ybcache
+import yscache
 
 def teacherInfo(user_cache, rawvres, raweres, user_req):
     s = ybclip.cd_preprocess(user_cache['context_data'], 'data', rawvres, raweres)
@@ -11,7 +11,7 @@ def teacherInfo(user_cache, rawvres, raweres, user_req):
     if s is not None: return s
     cdata = user_cache['context_data']['data']
 
-    teacher_cache = ybcache.get_cache(ybcache.short_name(cdata))
+    teacher_cache = yscache.get_cache(yscache.short_name(cdata))
     if teacher_cache is None:
         rawvres['response']['text'] = 'Извините, мне не знакомо это имя...'
         rawvres['response']['buttons'] = [ybclip.catalog_button]

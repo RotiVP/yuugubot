@@ -1,6 +1,6 @@
 from datetime import timedelta, time, datetime
 
-import ybcache
+import yscache
 
 
 pair_duration = timedelta(minutes=95)
@@ -34,7 +34,7 @@ def pair_time(string):
     return time(int(string[:2]), int(string[-2:]))
 
 def current_pair(timetable):
-    day = datetime.now(ybcache.zoneinfo)
+    day = datetime.now(yscache.zoneinfo)
 
     npair_item = None
     lpair_item = None
@@ -83,7 +83,7 @@ def name_preprocess(user_cache, rawvres, raweres, user_req):
     name_parts = len(cdata.split())
 
     if name_parts == 1: 
-        options = ybcache.get_cache(key=cdata, complete=False)
+        options = yscache.get_cache(key=cdata, complete=False)
         buttons = []
         for option in options:
             button = {

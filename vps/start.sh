@@ -1,5 +1,4 @@
 docker start redis
-docker start yuugubot
-python3 ../code/ybcache.py
-systemctl start ybcache_updater.timer
-#docker logs redis
+docker start ugrasage
+python3 ../code/yscache.py
+systemctl start yscache_update.timer
