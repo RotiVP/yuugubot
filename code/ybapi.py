@@ -105,7 +105,7 @@ def handleReqbody(body):
             indent=None)
 
 
-group_re = r'(?P<group>[А-яA-z0-9-]+|)'
+group_re = r'(?P<group>[А-яA-z0-9- ]+|)'
 # регулярное выражение для ФИО слишком сложное (юзай именованные сущности яндекса)
 name_re = r'(?P<name>.+)'
 
@@ -191,9 +191,9 @@ def handleRequest(user_cache, req, rawvres, raweres):
     last_context = user_cache['last_context']
     entities = req['nlu']['entities']
     phrase = re.sub(
-            r',|:|\.|\?|;|!|"',
+            r',|:|\.|\?|;|!|"|Спроси у|Скажи|Югорск.+ мудрец.+',
             '',
-            req['command'].lower().strip())
+            req['original_utterance'].lower().strip())
 
     #обязательства перед яндексом
     if phrase in ['помощь', 'что ты умеешь']:
@@ -378,7 +378,7 @@ def fetch_pair_cd(user_cache, reres, entities):
     if reres is not None:
         if reres.group('group') is not None:
             #может быть пустой, уточнение сгенерируется в обработчике 
-            user_cache['context_data']['data'] = reres.group('group')
+            user_cache['context_data']['data'] = reres.group('group').replace(" ", "")
             user_cache['context_data']['is_group'] = True
             return
 
